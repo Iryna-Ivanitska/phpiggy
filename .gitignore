@@ -1,1 +1,5 @@
+# phpstorm project files
 .idea
+
+composer.phar
+/vendor/
