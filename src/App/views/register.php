@@ -5,6 +5,7 @@ include $this->resolve("partials/_header.php");
             class="max-w-2xl mx-auto mt-12 p-4 bg-white shadow-md border border-gray-200 rounded"
     >
         <form method="POST" class="grid grid-cols-1 gap-6">
+            <?php include $this->resolve('partials/_csrf.php') ?>
             <!-- Email -->
             <label class="block">
                 <span class="text-gray-700">Email address</span>
@@ -42,9 +43,15 @@ include $this->resolve("partials/_header.php");
                         name="country"
 
                 >
-                    <option value="USA" <?= $oldFormData['country'] === 'USA' ? 'selected' : '' ?>>USA</option>
-                    <option value="Canada" <?= $oldFormData['country'] === 'Canada' ? 'selected' : '' ?>>Canada</option>
-                    <option value="Mexico" <?= $oldFormData['country'] === 'Mexico' ? 'selected' : '' ?>>Mexico</option>
+                    <option value="USA" <?= isset($oldFormData['country']) && $oldFormData['country'] === 'USA' ? 'selected' : '' ?>>
+                        USA
+                    </option>
+                    <option value="Canada" <?= isset($oldFormData['country']) && $oldFormData['country'] === 'Canada' ? 'selected' : '' ?>>
+                        Canada
+                    </option>
+                    <option value="Mexico" <?= isset($oldFormData['country']) && $oldFormData['country'] === 'Mexico' ? 'selected' : '' ?>>
+                        Mexico
+                    </option>
                     <option value="Invalid">Invalid Country</option>
                 </select>
                 <?php if (isset($errors['country'])): ?>
