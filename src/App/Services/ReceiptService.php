@@ -15,7 +15,7 @@ class ReceiptService
 
     public function validateFile(?array $file)
     {
-        if (!$file || $file['error'] !== UPLOAD_ERR_OK) {
+        if (!$file || $file['errors'] !== UPLOAD_ERR_OK) {
             throw new ValidationException([
                 'receipts' => ['Failed to upload file']
             ]);
